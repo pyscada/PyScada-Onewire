@@ -2,7 +2,12 @@
 from __future__ import unicode_literals
 
 from pyscada.models import Device, Variable
-from pyscada.onewire.models import OneWireVariable, OneWireDevice, ExtendedOneWireDevice, ExtendedOneWireVariable
+from pyscada.onewire.models import (
+    OneWireVariable,
+    OneWireDevice,
+    ExtendedOneWireDevice,
+    ExtendedOneWireVariable,
+)
 
 from django.dispatch import receiver
 from django.db.models.signals import post_save, pre_delete
@@ -25,9 +30,13 @@ def _reinit_daq_daemons(sender, instance, **kwargs):
     elif type(instance) is OneWireVariable:
         post_save.send_robust(sender=Variable, instance=instance.onewire_variable)
     elif type(instance) is ExtendedOneWireVariable:
-        post_save.send_robust(sender=Variable, instance=Variable.objects.get(pk=instance.pk))
+        post_save.send_robust(
+            sender=Variable, instance=Variable.objects.get(pk=instance.pk)
+        )
     elif type(instance) is ExtendedOneWireDevice:
-        post_save.send_robust(sender=Device, instance=Device.objects.get(pk=instance.pk))
+        post_save.send_robust(
+            sender=Device, instance=Device.objects.get(pk=instance.pk)
+        )
 
 
 @receiver(pre_delete, sender=OneWireVariable)
@@ -43,6 +52,10 @@ def _del_daq_daemons(sender, instance, **kwargs):
     elif type(instance) is OneWireVariable:
         pre_delete.send_robust(sender=Variable, instance=instance.onewire_variable)
     elif type(instance) is ExtendedOneWireVariable:
-        pre_delete.send_robust(sender=Variable, instance=Variable.objects.get(pk=instance.pk))
+        pre_delete.send_robust(
+            sender=Variable, instance=Variable.objects.get(pk=instance.pk)
+        )
     elif type(instance) is ExtendedOneWireDevice:
-        pre_delete.send_robust(sender=Device, instance=Device.objects.get(pk=instance.pk))
+        pre_delete.send_robust(
+            sender=Device, instance=Device.objects.get(pk=instance.pk)
+        )

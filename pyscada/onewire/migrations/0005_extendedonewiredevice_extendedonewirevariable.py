@@ -6,35 +6,32 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('pyscada', '0041_update_protocol_id'),
-        ('onewire', '0004_auto_20170405_1750'),
+        ("pyscada", "0041_update_protocol_id"),
+        ("onewire", "0004_auto_20170405_1750"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ExtendedOneWireDevice',
-            fields=[
-            ],
+            name="ExtendedOneWireDevice",
+            fields=[],
             options={
-                'verbose_name': 'OneWire Device',
-                'proxy': True,
-                'verbose_name_plural': 'OneWire Devices',
-                'indexes': [],
+                "verbose_name": "OneWire Device",
+                "proxy": True,
+                "verbose_name_plural": "OneWire Devices",
+                "indexes": [],
             },
-            bases=('pyscada.device',),
+            bases=("pyscada.device",),
         ),
         migrations.CreateModel(
-            name='ExtendedOneWireVariable',
-            fields=[
-            ],
+            name="ExtendedOneWireVariable",
+            fields=[],
             options={
-                'verbose_name': 'OneWire Variable',
-                'proxy': True,
-                'verbose_name_plural': 'OneWire Variable',
-                'indexes': [],
+                "verbose_name": "OneWire Variable",
+                "proxy": True,
+                "verbose_name_plural": "OneWire Variable",
+                "indexes": [],
             },
-            bases=('pyscada.variable',),
+            bases=("pyscada.variable",),
         ),
     ]

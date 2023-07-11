@@ -6,15 +6,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('onewire', '0003_onewiredevice'),
+        ("onewire", "0003_onewiredevice"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='onewiredevice',
-            name='adapter_type',
-            field=models.CharField(choices=[('owserver', 'OWFS owserver'), ('rpi_gpio4', 'RPi GPIO 4')], default='', max_length=400),
+            model_name="onewiredevice",
+            name="adapter_type",
+            field=models.CharField(
+                choices=[("owserver", "OWFS owserver"), ("rpi_gpio4", "RPi GPIO 4")],
+                default="",
+                max_length=400,
+            ),
         ),
     ]

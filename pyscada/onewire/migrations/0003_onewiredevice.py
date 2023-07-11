@@ -7,20 +7,40 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('pyscada', '0036_auto_20170224_1245'),
-        ('onewire', '0002_auto_20170225_0907'),
+        ("pyscada", "0036_auto_20170224_1245"),
+        ("onewire", "0002_auto_20170225_0907"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='OneWireDevice',
+            name="OneWireDevice",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('adapter_type', models.CharField(default='', max_length=400)),
-                ('config', models.CharField(blank=True, default='', help_text='for OWFS owserver: hostname:port, default is localhost:4304', max_length=400)),
-                ('onewire_device', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='pyscada.Device')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("adapter_type", models.CharField(default="", max_length=400)),
+                (
+                    "config",
+                    models.CharField(
+                        blank=True,
+                        default="",
+                        help_text="for OWFS owserver: hostname:port, default is localhost:4304",
+                        max_length=400,
+                    ),
+                ),
+                (
+                    "onewire_device",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE, to="pyscada.Device"
+                    ),
+                ),
             ],
         ),
     ]
