@@ -60,8 +60,8 @@ class Device:
                             )
                 # update variable
                 timestamp = time()
-                if value is not None and item.update_value(value, timestamp):
-                    output.append(item.create_recorded_data_element())
+                if value is not None and item.update_values([value], [timestamp]):
+                    output.append(item)
             return output
         # OWServer
         elif self.device.onewiredevice.adapter_type == "owserver":
@@ -102,6 +102,6 @@ class Device:
 
                 # update variable
                 timestamp = time()
-                if value is not None and item.update_value(value, timestamp):
-                    output.append(item.create_recorded_data_element())
+                if value is not None and item.update_values([value], [timestamp]):
+                    output.append(item)
             return output
